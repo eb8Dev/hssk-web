@@ -1,0 +1,273 @@
+/* Reset & base */
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Playwrite AU TAS', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #001a16;
+  color: #fff;
+}
+
+/* ------------------------------
+   HERO SECTION - 3D LAYERED LOOK
+--------------------------------*/
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  background: linear-gradient(-45deg, #001a16, #004d40, #00332e, #001a16);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  perspective: 1000px;
+}
+
+.hero-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 600px;
+  width: 100%;
+  transform-style: preserve-3d;
+}
+
+/* NEW: Logo behind title but above background */
+.logo-layer {
+  position: absolute;
+  z-index: 1; /* sits between bg and title */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.45; /* subtle transparency to blend with bg */
+  pointer-events: none; /* let mouse go through */
+}
+
+.title-layer {
+  position: relative;
+  z-index: 2; /* on top of logo */
+}
+
+.hero-content h1 {
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  margin: 0;
+  user-select: none;
+}
+
+/* Logo image (even if InteractiveLogo is used) */
+.logo-layer img {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.logo-layer img:hover {
+  transform: scale(1.1) rotateY(10deg) rotateX(5deg);
+}
+
+/* Gradient animation */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ------------------------------
+   MENU SECTION
+--------------------------------*/
+.menu-section {
+  padding: 3rem 2rem;
+  width: 100vw;
+  background-color: #0a2a25;
+  color: #eee;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.menu-card {
+  background: #144b46;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgb(0 0 0 / 0.7);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.menu-card h3 {
+  margin: 0.5rem 0 1rem 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* ------------------------------
+   MODAL
+--------------------------------*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #0a2a25;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  color: #eee;
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.modal-content h2 {
+  margin: 0 0 0.5rem 0;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.close-btn {
+  background: #646cff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+}
+
+.close-btn:hover {
+  background: #535bf2;
+}
+
+/* ------------------------------
+   FOOTER
+--------------------------------*/
+.footer {
+  background: #001a16;
+  color: #bbb;
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-top: 1px solid #144b46;
+}
+
+.footer-info {
+  flex: 1 1 300px;
+  margin-bottom: 1rem;
+}
+
+.footer-info h3 {
+  margin-top: 0;
+}
+
+.footer-info address {
+  font-style: normal;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  margin-right: 1rem;
+  color: #646cff;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+.dev-links {
+  flex: 1 1 200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 0.9rem;
+}
+
+.dev-links a {
+  color: #646cff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.dev-links a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------------
+   RESPONSIVE
+--------------------------------*/
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dev-links {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
