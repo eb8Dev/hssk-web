@@ -1,4 +1,4 @@
-import React from "react";
+
 import logo from "./assets/logo-circle.png";
 import "./App.css";
 import Menu from "./Menu";
